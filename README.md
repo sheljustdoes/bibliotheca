@@ -40,7 +40,7 @@ What changes when scale, scope, and learning are no longer constrained.
 | *Competing in the Age of AI* | Iansiti, Lakhani | Reading |
 <!-- SHELF:END -->
 
-The full shelf lives at **[yourusername.github.io/bibliotheca](https://sheljustdoes.github.io/bibliotheca)**
+The full shelf lives at **[sheljustdoes.github.io/bibliotheca](https://sheljustdoes.github.io/bibliotheca)**
 
 ---
 
