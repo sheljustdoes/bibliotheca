@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shel. — reading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F5F1EB;
+      --parchment:  #EAE4D9;
+      --taupe:      #C8BFB0;
+      --charcoal:   #1E1C1A;
+      --ink:        #141210;
+
+      --terracotta: #D4603A;
+      --amber:      #E8A830;
+      --blush:      #E8B4A2;
+      --blush-deep: #D4896E;
+      --indigo:     #3A4D8F;
+      --indigo-pale:#B8C0DC;
+      --forest:     #2E5A45;
+      --forest-pale:#A8C4B4;
+      --sage:       #7A8C6E;
+      --dusty-blue: #7A8FB5;
+
+      --rule:        rgba(30,28,26,0.12);
+      --rule-strong: rgba(30,28,26,0.22);
+      --col-left: 400px;
+    }
+
+    html, body { height: 100%; background: var(--cream); color: var(--charcoal); font-family: 'DM Mono', monospace; overflow: hidden; }
+
+    /* Layout */
+    .layout { display: grid; grid-template-columns: var(--col-left) 1fr; height: 100vh; }
+
+    /* Left panel */
+    .panel-left { display: flex; flex-direction: column; border-right: 1px solid var(--rule-strong); background: var(--cream); z-index: 2; }
+
+    /* Brand header */
+    .brand-header { display: flex; align-items: baseline; justify-content: space-between; padding: 28px 40px 24px; border-bottom: 2px solid var(--charcoal); flex-shrink: 0; }
+    .wordmark { font-family: 'Outfit', sans-serif; font-size: 42px; font-weight: 600; letter-spacing: -2px; line-height: 1; color: var(--charcoal); }
+    .wordmark .period { color: var(--terracotta); }
+    .brand-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--taupe); }
+
+    /* Hero body */
+    .hero-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 40px 28px; gap: 20px; }
+    .hero-display { font-family: 'Outfit', sans-serif; font-size: clamp(2.6rem, 3.8vw, 3.4rem); font-weight: 600; letter-spacing: -2.5px; line-height: 0.9; color: var(--charcoal); }
+    .hero-display .gesture { color: var(--terracotta); font-style: italic; font-weight: 300; display: block; }
+    .hero-serif { font-family: 'Lora', Georgia, serif; font-size: 14px; font-style: italic; line-height: 1.75; color: var(--taupe); max-width: 270px; }
+
+    /* Search */
+    .search-block { padding: 24px 40px 24px; border-top: 1px solid var(--rule-strong); flex-shrink: 0; }
+    .field { margin-bottom: 17px; }
+    .field label { display: block; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 7px; }
+    .field input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--charcoal); padding: 5px 0 8px; font-family: 'Lora', Georgia, serif; font-size: 15px; font-style: italic; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
+    .field input::placeholder { color: var(--taupe); }
+    .field input:focus { border-color: var(--terracotta); }
+    .btn-add { display: inline-flex; align-items: center; gap: 8px; background: var(--charcoal); color: var(--cream); border: none; padding: 11px 22px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 2px; }
+    .btn-add:hover { background: var(--terracotta); }
+    .btn-add.loading { opacity: 0.5; pointer-events: none; }
+
+    /* Footer */
+    .panel-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; border-top: 1px solid var(--rule); flex-shrink: 0; }
+    .book-count { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--taupe); }
+    .reading-timer { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--taupe); }
+
+    /* Right panel */
+    .panel-right { overflow-y: auto; overflow-x: hidden; background: var(--parchment); scrollbar-width: none; }
+    .panel-right::-webkit-scrollbar { display: none; }
+
+    .cascade-header { padding: 24px 36px 20px; border-bottom: 1px solid var(--rule-strong); display: flex; align-items: baseline; justify-content: space-between; }
+    .cascade-title { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--taupe); }
+
+    .cascade-wrap { padding: 28px 36px 80px; }
+
+    /* Section header */
+    .section-header { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: baseline; border-top: 1px solid var(--rule-strong); padding-top: 10px; margin-bottom: 18px; margin-top: 32px; }
+    .section-header.first { margin-top: 0; border-top: none; padding-top: 0; }
+    .sec-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--terracotta); }
+    .sec-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--charcoal); font-weight: 500; }
+
+    /* Grid */
+    .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 18px; align-items: start; }
+    .col-b { margin-top: 60px; }
+
+    /* Card */
+    .book-card { cursor: pointer; animation: fadeUp 0.4s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    .book-cover-wrap { position: relative; width: 100%; aspect-ratio: 2/3; overflow: hidden; box-shadow: 3px 5px 14px rgba(20,18,16,0.16), 1px 2px 4px rgba(20,18,16,0.08); transform: perspective(700px) rotateY(-2.5deg) rotateX(1deg); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .book-card:hover .book-cover-wrap { transform: perspective(700px) rotateY(0) rotateX(0) translateY(-5px); box-shadow: 6px 14px 28px rgba(20,18,16,0.2), 2px 4px 8px rgba(20,18,16,0.1); }
+    .book-cover-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cover-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 18px; text-align: center; }
+    .cover-placeholder span { font-family: 'Lora', Georgia, serif; font-size: 0.78rem; font-style: italic; color: rgba(245,241,235,0.9); line-height: 1.4; }
+
+    .ph-0 { background: var(--indigo); }
+    .ph-1 { background: var(--forest); }
+    .ph-2 { background: var(--terracotta); }
+    .ph-3 { background: var(--sage); }
+    .ph-4 { background: var(--dusty-blue); }
+    .ph-5 { background: var(--blush-deep); }
+
+    .status-pip { position: absolute; top: 9px; right: 9px; width: 7px; height: 7px; border-radius: 50%; }
+    .status-pip.reading  { background: var(--terracotta); }
+    .status-pip.finished { background: var(--taupe); border: 1.5px solid rgba(245,241,235,0.6); }
+    .status-pip.want     { background: transparent; border: 1.5px solid rgba(245,241,235,0.5); }
+
+    .book-meta { margin-top: 10px; padding: 0 2px; }
+    .book-title { font-family: 'Lora', Georgia, serif; font-size: 13px; font-style: italic; line-height: 1.3; color: var(--charcoal); margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .book-author { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; color: var(--taupe); }
+
+    /* Overlay */
+    .overlay { position: fixed; inset: 0; background: rgba(20,18,16,0.6); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    .detail-card { background: var(--cream); width: min(680px, 94vw); max-height: 88vh; overflow-y: auto; position: relative; transform: translateY(16px); transition: transform 0.25s ease; scrollbar-width: none; }
+    .overlay.open .detail-card { transform: translateY(0); }
+    .detail-card::-webkit-scrollbar { display: none; }
+
+    .detail-bar { display: flex; align-items: center; justify-content: space-between; padding: 15px 28px; border-bottom: 2px solid var(--charcoal); }
+    .detail-bar-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--terracotta); }
+    .detail-close { background: none; border: 1.5px solid var(--charcoal); width: 26px; height: 26px; cursor: pointer; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; color: var(--charcoal); transition: background 0.2s, color 0.2s; }
+    .detail-close:hover { background: var(--charcoal); color: var(--cream); }
+
+    .detail-body { display: grid; grid-template-columns: 140px 1fr; }
+    .detail-cover-col { padding: 28px 20px 28px 28px; border-right: 1px solid var(--rule); }
+    .detail-cover { width: 100%; aspect-ratio: 2/3; object-fit: cover; box-shadow: 3px 5px 14px rgba(20,18,16,0.16); display: block; background: var(--parchment); }
+
+    .detail-info-col { padding: 28px 32px 28px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .detail-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -0.5px; line-height: 1.1; color: var(--charcoal); }
+    .detail-author { font-family: 'Lora', Georgia, serif; font-size: 13px; font-style: italic; color: var(--taupe); margin-top: -8px; }
+    .detail-rule { border: none; border-top: 1px solid var(--rule); }
+    .detail-desc { font-family: 'Lora', Georgia, serif; font-size: 13px; line-height: 1.8; color: var(--charcoal); font-style: italic; }
+
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--rule-strong); padding: 3px 8px; color: var(--taupe); }
+
+    .detail-rating { display: flex; gap: 3px; }
+    .star { font-size: 13px; color: var(--taupe); }
+    .star.filled { color: var(--terracotta); }
+
+    .detail-note { font-family: 'Lora', Georgia, serif; font-size: 13px; font-style: italic; color: var(--taupe); border-left: 2px solid var(--terracotta); padding-left: 14px; line-height: 1.65; }
+
+    .detail-meta-row { display: flex; gap: 20px; flex-wrap: wrap; }
+    .detail-meta-item { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--taupe); }
+    .detail-meta-item span { display: block; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 2px; font-size: 8px; }
+
+    /* Toast */
+    .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(10px); background: var(--charcoal); color: var(--cream); font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; padding: 10px 20px; text-transform: uppercase; opacity: 0; transition: opacity 0.25s, transform 0.25s; pointer-events: none; z-index: 200; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- LEFT -->
+  <aside class="panel-left">
+    <div class="brand-header">
+      <div class="wordmark">shel<span class="period">.</span></div>
+      <div class="brand-label">Reading</div>
+    </div>
+
+    <div class="hero-body">
+      <div class="hero-display">
+        What<br>I'm<br>
+        <span class="gesture">reading.</span>
+      </div>
+      <p class="hero-serif">No recommendations. No ratings war.<br>Just the books — and what they leave behind.</p>
+    </div>
+
+    <div class="search-block">
+      <div class="field">
+        <label>ISBN-13</label>
+        <input type="text" id="isbn-input" placeholder="9781633695689" maxlength="13" />
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <input type="text" id="status-input" placeholder="reading · finished · want" />
+      </div>
+      <button class="btn-add" id="add-btn"><span>Add to Shelf →</span></button>
+    </div>
+
+    <div class="panel-footer">
+      <div class="book-count" id="book-count">— books</div>
+      <div class="reading-timer" id="timer">0000 H 00 MIN 00 SEC</div>
+    </div>
+  </aside>
+
+  <!-- RIGHT -->
+  <main class="panel-right">
+    <div class="cascade-header">
+      <span class="cascade-title">The Shelf</span>
+      <span class="cascade-title" id="shelf-date"></span>
+    </div>
+    <div class="cascade-wrap" id="cascade-wrap"></div>
+  </main>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="detail-card">
+    <div class="detail-bar">
+      <span class="detail-bar-label" id="detail-status-label">—</span>
+      <button class="detail-close" id="detail-close">✕</button>
+    </div>
+    <div class="detail-body" id="detail-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Seed data shown while books.json loads (or if it can't be fetched)
+const SEED_BOOKS = [
+  {
+    isbn:"9781633695689", status:"reading", date_added:"2026-03-04", date_finished:null, rating:null,
+    note:null,
+    title:"Prediction Machines: The Simple Economics of Artificial Intelligence",
+    authors:["Ajay Agrawal","Joshua Gans","Avi Goldfarb"],
+    publisher:"Harvard Business Press", year:2018, pages:272,
+    cover:"https://books.google.com/books/publisher/content/images/frontcover/wJY4DwAAQBAJ?fife=w400-h600&source=gbs_api",
+    description:"An incisive look at how AI fundamentally changes the economics of decision-making by reducing the cost of prediction — and what that means for business strategy, jobs, and the future of the economy.",
+    subjects:["Artificial Intelligence","Business & Economics","Strategic Planning"]
+  }
+];
+
+let books = [...SEED_BOOKS];
+
+// Load from books.json (written by GitHub Action)
+async function loadBooks() {
+  try {
+    const res  = await fetch('books.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (Array.isArray(data.books) && data.books.length) {
+      books = data.books;
+      renderShelf();
+    }
+  } catch (e) {
+    // books.json not present yet — seed data stays visible
+    console.info('[bibliotheca] books.json not found, showing seed data');
+  }
+}
+
+// Timer
+const startEpoch = Date.now() - (6533*3600+23*60+45)*1000;
+function updateTimer() {
+  const e = Math.floor((Date.now()-startEpoch)/1000);
+  const h = String(Math.floor(e/3600)).padStart(4,'0');
+  const m = String(Math.floor((e%3600)/60)).padStart(2,'0');
+  const s = String(e%60).padStart(2,'0');
+  document.getElementById('timer').textContent = `${h} H ${m} MIN ${s} SEC`;
+}
+setInterval(updateTimer,1000); updateTimer();
+
+document.getElementById('shelf-date').textContent =
+  new Date().toLocaleDateString('en-US',{year:'numeric',month:'long'}).toUpperCase();
+
+const STATUS_ORDER  = ['reading','finished','want'];
+const STATUS_LABELS = {reading:'Currently Reading',finished:'Finished',want:'On the List'};
+const STATUS_NUMS   = {reading:'01',finished:'02',want:'03'};
+const PH_CLASSES    = ['ph-0','ph-1','ph-2','ph-3','ph-4','ph-5'];
+
+function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function today(){ return new Date().toISOString().split('T')[0]; }
+
+function renderShelf(){
+  const wrap = document.getElementById('cascade-wrap');
+  wrap.innerHTML='';
+  let gi=0, secIdx=0;
+  STATUS_ORDER.forEach(status=>{
+    const group=books.filter(b=>b.status===status);
+    if(!group.length) return;
+    const sh=document.createElement('div');
+    sh.className='section-header'+(secIdx===0?' first':'');
+    sh.innerHTML=`<span class="sec-num">${STATUS_NUMS[status]}</span><span class="sec-label">${STATUS_LABELS[status]}</span>`;
+    wrap.appendChild(sh);
+    const grid=document.createElement('div'); grid.className='book-grid';
+    const cA=document.createElement('div'); cA.className='col-a';
+    const cB=document.createElement('div'); cB.className='col-b';
+    group.forEach((book,i)=>{
+      const card=buildCard(book,gi);
+      (i%2===0?cA:cB).appendChild(card);
+      gi++;
+    });
+    grid.appendChild(cA); grid.appendChild(cB); wrap.appendChild(grid);
+    secIdx++;
+  });
+  document.getElementById('book-count').textContent=`${books.length} book${books.length!==1?'s':''}`;
+}
+
+function buildCard(book,idx){
+  const card=document.createElement('div');
+  card.className='book-card';
+  card.style.animationDelay=`${idx*0.06}s`;
+  const ph=PH_CLASSES[idx%6];
+  const coverHtml=book.cover
+    ?`<img src="${esc(book.cover)}" alt="${esc(book.title)}" loading="lazy" onerror="this.outerHTML='<div class=\\'cover-placeholder ${ph}\\'><span>${esc(book.title)}</span></div>'" />`
+    :`<div class="cover-placeholder ${ph}"><span>${esc(book.title)}</span></div>`;
+  card.innerHTML=`
+    <div class="book-cover-wrap">
+      ${coverHtml}
+      <div class="status-pip ${book.status}"></div>
+    </div>
+    <div class="book-meta">
+      <div class="book-title">${esc(book.title)}</div>
+      <div class="book-author">${esc(book.authors.join(', '))}</div>
+    </div>`;
+  card.addEventListener('click',()=>openDetail(book));
+  return card;
+}
+
+function openDetail(book){
+  document.getElementById('detail-status-label').textContent=STATUS_LABELS[book.status]||book.status;
+  const ph=PH_CLASSES[books.indexOf(book)%6];
+  const coverHtml=book.cover
+    ?`<img class="detail-cover" src="${esc(book.cover)}" alt="${esc(book.title)}" onerror="this.outerHTML='<div class=\\'detail-cover cover-placeholder ${ph}\\'><span>${esc(book.title)}</span></div>'" />`
+    :`<div class="detail-cover cover-placeholder ${ph}"><span>${esc(book.title)}</span></div>`;
+  const ratingHtml=book.rating!=null
+    ?`<div class="detail-rating">${[1,2,3,4,5].map(i=>`<span class="star${i<=book.rating?' filled':''}">\u2605</span>`).join('')}</div>`:'' ;
+  const noteHtml=book.note?`<blockquote class="detail-note">${esc(book.note)}</blockquote>`:'';
+  const tagsHtml=book.subjects?.length?`<div class="detail-tags">${book.subjects.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>`:'';
+  const metaHtml=[
+    book.pages?`<div class="detail-meta-item"><span>Pages</span>${book.pages}</div>`:'',
+    book.year?`<div class="detail-meta-item"><span>Year</span>${book.year}</div>`:'',
+    book.publisher?`<div class="detail-meta-item"><span>Publisher</span>${esc(book.publisher)}</div>`:'',
+    book.date_finished?`<div class="detail-meta-item"><span>Finished</span>${book.date_finished}</div>`:'',
+  ].filter(Boolean).join('');
+  document.getElementById('detail-body').innerHTML=`
+    <div class="detail-cover-col">${coverHtml}</div>
+    <div class="detail-info-col">
+      <div class="detail-title">${esc(book.title)}</div>
+      <div class="detail-author">${esc(book.authors.join(', '))}</div>
+      <hr class="detail-rule"/>
+      ${book.description?`<p class="detail-desc">${esc(book.description)}</p>`:''}
+      ${tagsHtml}${ratingHtml}${noteHtml}
+      ${metaHtml?`<div class="detail-meta-row">${metaHtml}</div>`:''}
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+}
+
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target===document.getElementById('overlay'))closeDetail();});
+document.getElementById('detail-close').addEventListener('click',closeDetail);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
+function closeDetail(){ document.getElementById('overlay').classList.remove('open'); }
+
+document.getElementById('add-btn').addEventListener('click',async()=>{
+  const isbn=document.getElementById('isbn-input').value.trim().replace(/[^0-9X]/gi,'');
+  const status=document.getElementById('status-input').value.trim().toLowerCase()||'reading';
+  if(isbn.length!==13&&isbn.length!==10){showToast('Enter a valid ISBN-13');return;}
+  if(books.find(b=>b.isbn===isbn)){showToast('Already on your shelf');return;}
+  const btn=document.getElementById('add-btn');
+  btn.classList.add('loading'); btn.querySelector('span').textContent='Fetching →';
+  try{
+    const res=await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+    const data=await res.json();
+    if(!data.items?.length){showToast('Book not found — check the ISBN');return;}
+    const vol=data.items[0].volumeInfo;
+    const rawCover=vol.imageLinks?(vol.imageLinks.extraLarge||vol.imageLinks.large||vol.imageLinks.thumbnail):null;
+    const cover=rawCover?rawCover.replace('http://','https://'):null;
+    const vs=['reading','finished','want'].includes(status)?status:'reading';
+    books.unshift({isbn,status:vs,date_added:today(),date_finished:vs==='finished'?today():null,
+      rating:null,note:null,title:vol.title||'Unknown Title',authors:vol.authors||['Unknown Author'],
+      publisher:vol.publisher||'',year:vol.publishedDate?parseInt(vol.publishedDate):null,
+      pages:vol.pageCount||null,cover,
+      description:vol.description?vol.description.slice(0,320)+(vol.description.length>320?'…':''):'',
+      subjects:vol.categories?vol.categories.slice(0,3).map(c=>c.split('/').pop().trim()):[]});
+    renderShelf();
+    showToast(`Added · ${(vol.title||'').slice(0,36)}${(vol.title||'').length>36?'…':''}`);
+    document.getElementById('isbn-input').value='';
+    document.getElementById('status-input').value='';
+  }catch(err){showToast('Error fetching data');console.error(err);}
+  finally{btn.classList.remove('loading');btn.querySelector('span').textContent='Add to Shelf →';}
+});
+
+document.getElementById('isbn-input').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add-btn').click();});
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+renderShelf();   // render seed immediately
+loadBooks();     // then replace with books.json if available
+</script>
+</body>
+</html>
