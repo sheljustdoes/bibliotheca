@@ -1,7 +1,27 @@
 {
-  "generated": "2026-03-05T00:55:33.051Z",
-  "count": 3,
+  "generated": "2026-03-05T02:08:12.420Z",
+  "count": 15,
   "books": [
+    {
+      "isbn": "9780316419598",
+      "status": "reading",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Velocity Weapon",
+      "authors": [
+        "Megan E. O'Keefe"
+      ],
+      "publisher": "Orbit",
+      "year": 2019,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=-fI-ugEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Dazzling space battles, intergalactic politics, and rogue AI collide in Velocity Weapon, the first book in this epic space opera trilogy by award-winning author Megan O'Keefe. Sanda and Biran Greeve were siblings destined for greatness. A high-flying sergeant, Sanda has the skills to take down any enemy combatant. Biran is a savvy politician who aims to use his new political position to prevent co…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
     {
       "isbn": "9781633695689",
       "status": "reading",
@@ -25,6 +45,182 @@
       ]
     },
     {
+      "isbn": "9781094374901",
+      "status": "finished",
+      "date_added": "2026-03-05",
+      "date_finished": "2026-03-05",
+      "rating": null,
+      "note": null,
+      "title": "9781094374901",
+      "authors": [],
+      "publisher": "",
+      "year": null,
+      "pages": null,
+      "cover": null,
+      "description": "",
+      "subjects": []
+    },
+    {
+      "isbn": "9781250275059",
+      "status": "finished",
+      "date_added": "2026-03-05",
+      "date_finished": "2026-03-05",
+      "rating": null,
+      "note": null,
+      "title": "Antimatter Blues",
+      "authors": [
+        "Edward Ashton"
+      ],
+      "publisher": "St. Martin's Press",
+      "year": 2023,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=JnRrEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Edward Ashton's Antimatter Blues is the thrilling follow up to Mickey7 in which an expendable heads out to explore new terrain for human habitation. Summer has come to Niflheim. The lichens are growing, the six-winged bat-things are chirping, and much to his own surprise, Mickey Barnes is still alive—that last part thanks almost entirely to the fact that Commander Marshall believes that the colony…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9781250286321",
+      "status": "finished",
+      "date_added": "2026-03-05",
+      "date_finished": "2026-03-05",
+      "rating": null,
+      "note": null,
+      "title": "Mal Goes to War",
+      "authors": [
+        "Edward Ashton"
+      ],
+      "publisher": "St. Martin's Press",
+      "year": 2024,
+      "pages": 254,
+      "cover": "https://books.google.com/books/content?id=eei5EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "The humans are fighting again. Go figure. As a free A.I., Mal finds the war between the modded and augmented Federals and the puritanical Humanists about as interesting as a battle between rival anthills. He’s not above scouting the battlefield for salvage, though, and when the Humanists abruptly cut off access to infospace he finds himself trapped in the body of a cyborg mercenary, and responsibl…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9781250875280",
+      "status": "finished",
+      "date_added": "2026-03-05",
+      "date_finished": "2026-03-05",
+      "rating": null,
+      "note": null,
+      "title": "Mickey7",
+      "authors": [
+        "Edward Ashton"
+      ],
+      "publisher": "St. Martin's Griffin",
+      "year": 2023,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=um9pEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "\"Mickey7 is an Expendable: a disposable employee on a human expedition sent to colonize the ice world Niflheim. Whenever there's a mission that's too dangerous--even suicidal--the crew turns to Mickey. After one iteration dies, a new body is regenerated with most of his memories intact. On a routine scouting mission, Mickey7 goes missing and is presumed dead. By the time he returns to the colony b…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9780062690326",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "The End of Ordinary",
+      "authors": [
+        "Edward Ashton"
+      ],
+      "publisher": "Harper Voyager Impulse",
+      "year": 2017,
+      "pages": 448,
+      "cover": "https://books.google.com/books/content?id=mhIZtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Drew Bergen is an Engineer. He builds living things, one gene at a time. He’s also kind of a doofus. Six years after the Stupid War—a bloody, inconclusive clash between the Engineered and the UnAltered—that’s a dangerous combination. Hannah is Drew’s greatest project, modified in utero to be just a bit more than human. She’s also his daughter. Drew’s working on a new project now. He thinks his tea…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9780140280197",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "The 48 Laws of Power",
+      "authors": [
+        "Robert Greene"
+      ],
+      "publisher": "Penguin",
+      "year": 2000,
+      "pages": 497,
+      "cover": "https://books.google.com/books/content?id=HIZPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Amoral, cunning, ruthless, and instructive, this multi-million-copy New York Times bestseller is the definitive manual for anyone interested in gaining, observing, or defending against ultimate control – from the author of The Laws of Human Nature. This is the only authorized paperback edition in the US. In the book that People magazine proclaimed “beguiling” and “fascinating,” Robert Greene and J…",
+      "subjects": [
+        "Self-Help"
+      ]
+    },
+    {
+      "isbn": "9780316129084",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Leviathan Wakes",
+      "authors": [
+        "James S.A. Corey"
+      ],
+      "publisher": "Orbit",
+      "year": 2011,
+      "pages": 592,
+      "cover": "https://books.google.com/books/content?id=1VdJlwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The book is the basis for the first season of The Expanse, a new original series premiering on Syfy in December 2015. Leviathan Wakes is James S. A. Corey's first novel in the epic series the Expanse, a modern masterwork of science fiction where humanity has colonized the solar system. Two hundred years after migrating into space, mankind is in turmoil. When a reluctant ship's captain and washed-u…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9780345404473",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Do Androids Dream of Electric Sheep?",
+      "authors": [
+        "Philip K. Dick"
+      ],
+      "publisher": "Del Rey",
+      "year": 1996,
+      "pages": 258,
+      "cover": "https://books.google.com/books/content?id=3vExWrUnJB0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A masterpiece ahead of its time, a prescient rendering of a dark future, and the inspiration for the blockbuster film Blade Runner One of The Atlantic’s Great American Novels of the Past 100 Years By 2021, the World War has killed millions, driving entire species into extinction and sending mankind off-planet. Those who remain covet any living creature, and for people who can’t afford one, compani…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9780759557178",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Cyberpunk 2077: No Coincidence",
+      "authors": [
+        "Rafal Kosik"
+      ],
+      "publisher": "",
+      "year": 2023,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=4sd3zwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Set in the world of Cyberpunk 2077, one of the bestselling video games of recent years, from acclaimed Polish science fiction writer Rafal Kosik, this electrifying novel follows a group of strangers as they discover that the dangers of Night City are all too real. In sparkling Night City, a ragtag group of strangers have just pulled off a heist, robbing a convoy transporting a mysterious container…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
       "isbn": "9780804136693",
       "status": "want",
       "date_added": "2026-03-05",
@@ -43,6 +239,44 @@
       "description": "The Good Judgment Project involves tens of thousands of ordinary people--including a Brooklyn filmmaker, a retired pipe installer, and a former ballroom dancer--who set out to forecast global events. Some of the volunteers have turned out to be astonishingly good. They've beaten other benchmarks, competitors, and prediction markets. They've even beaten the collective judgment of intelligence analy…",
       "subjects": [
         "BUSINESS & ECONOMICS"
+      ]
+    },
+    {
+      "isbn": "9781094373522",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Beachfront Bakery",
+      "authors": [
+        "Fiona Grace"
+      ],
+      "publisher": "Fiona Grace",
+      "year": 2021,
+      "pages": 184,
+      "cover": "https://books.google.com/books/content?id=F3xXzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "\"Very entertaining. I highly recommend this book to the permanent library of any reader that appreciates a very well written mystery, with some twists and an intelligent plot. You will not be disappointed. Excellent way to spend a cold weekend!\" --Books and Movie Reviews, Roberto Mattos (regarding Murder in the Manor) BEACHFRONT BAKERY: A KILLER CUPCAKE is the debut novel in a charming and hilario…",
+      "subjects": []
+    },
+    {
+      "isbn": "9781616964306",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "One Level Down",
+      "authors": [
+        "Mary G Thompson"
+      ],
+      "publisher": "",
+      "year": 2025,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=Oefb0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Trapped in a child's body, a resourceful woman risks death by deletion from a simulated world. With her debut novella for adults, Mary G. Thompson (Wuftoom) has crafted a taut, ultimately hopeful story that deftly explores identity and autonomy. \"It is impossible to look away from Mary G. Thompson's provocative story of simulations, power imbalance, and whether kindness can overcome cruelty in the…",
+      "subjects": [
+        "Fiction"
       ]
     },
     {
