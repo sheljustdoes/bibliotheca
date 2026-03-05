@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-05T02:38:39.124Z",
-  "count": 15,
+  "generated": "2026-03-05T10:14:56.467Z",
+  "count": 16,
   "books": [
     {
       "isbn": "9780316419598",
@@ -260,6 +260,26 @@
       "cover": "https://books.google.com/books/content?id=F3xXzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       "description": "\"Very entertaining. I highly recommend this book to the permanent library of any reader that appreciates a very well written mystery, with some twists and an intelligent plot. You will not be disappointed. Excellent way to spend a cold weekend!\" --Books and Movie Reviews, Roberto Mattos (regarding Murder in the Manor) BEACHFRONT BAKERY: A KILLER CUPCAKE is the debut novel in a charming and hilario…",
       "subjects": []
+    },
+    {
+      "isbn": "9781400078776",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Never Let Me Go",
+      "authors": [
+        "Kazuo Ishiguro"
+      ],
+      "publisher": "Vintage",
+      "year": 2006,
+      "pages": 305,
+      "cover": "https://books.google.com/books/content?id=5N4cCOjPjv8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "NOBEL PRIZE WINNER • From the acclaimed, bestselling author of The Remains of the Day comes “a Gothic tour de force\" (The New York Times) with an extraordinary twist—a moving, suspenseful, beautifully atmospheric modern classic. One of The New York Times’s 10 Best Books of the 21st Century • A Kirkus Reviews Best Fiction Book of the Century • A Los Angeles Times Best Fiction Book of the Last 30 Ye…",
+      "subjects": [
+        "Fiction"
+      ]
     },
     {
       "isbn": "9781616964306",
