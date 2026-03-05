@@ -27,6 +27,10 @@ How organizations think, and what happens when machines begin to think alongside
 **Systems & strategy**
 The structural forces underneath industries, institutions, and ideas.
 What changes when scale, scope, and learning are no longer constrained.
+
+**Identity under pressure**
+What persists when the body is replaced, duplicated, or engineered.
+Who you are when the system you were built for no longer needs you.
 <!-- THEMES:END -->
 
 ---
@@ -36,8 +40,8 @@ What changes when scale, scope, and learning are no longer constrained.
 <!-- SHELF:START -->
 | Title | Author(s) | Status |
 |---|---|---|
+| *Velocity Weapon* | Megan E. O'Keefe | Reading |
 | *Prediction Machines* | Agrawal, Gans, Goldfarb | Reading |
-| *Competing in the Age of AI* | Iansiti, Lakhani | Reading |
 <!-- SHELF:END -->
 
 The full shelf lives at **[sheljustdoes.github.io/bibliotheca](https://sheljustdoes.github.io/bibliotheca)**
