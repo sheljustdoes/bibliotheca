@@ -55,7 +55,6 @@
     .hero-serif { font-family: 'Lora', Georgia, serif; font-size: 14px; font-style: italic; line-height: 1.75; color: var(--taupe); max-width: 270px; }
 
     /* Search */
-    .search-block { padding: 24px 40px 24px; border-top: 1px solid var(--rule-strong); flex-shrink: 0; }
     .field { margin-bottom: 17px; }
     .field label { display: block; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 7px; }
     .field input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--charcoal); padding: 5px 0 8px; font-family: 'Lora', Georgia, serif; font-size: 15px; font-style: italic; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
@@ -69,6 +68,12 @@
     .panel-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; border-top: 1px solid var(--rule); flex-shrink: 0; }
     .book-count { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--taupe); }
     .reading-timer { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--taupe); }
+    .lock-btn { background: none; border: none; cursor: pointer; font-size: 11px; color: var(--taupe); opacity: 0.4; transition: opacity 0.2s; padding: 0; line-height: 1; }
+    .lock-btn:hover { opacity: 1; }
+
+    /* Search block hidden by default, shown when unlocked */
+    .search-block { padding: 24px 40px 24px; border-top: 1px solid var(--rule-strong); flex-shrink: 0; display: none; }
+    .search-block.visible { display: block; }
 
     /* Right panel */
     .panel-right { overflow-y: auto; overflow-x: hidden; background: var(--parchment); scrollbar-width: none; }
@@ -86,8 +91,7 @@
     .sec-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--charcoal); font-weight: 500; }
 
     /* Grid */
-    .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 18px; align-items: start; }
-    .col-b { margin-top: 60px; }
+    .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 22px 16px; align-items: start; }
 
     /* Card */
     .book-card { cursor: pointer; animation: fadeUp 0.4s ease both; }
@@ -176,7 +180,7 @@
       <p class="hero-serif">No recommendations. No ratings war.<br>Just the books — and what they leave behind.</p>
     </div>
 
-    <div class="search-block">
+    <div class="search-block" id="search-block">
       <div class="field">
         <label>ISBN-13</label>
         <input type="text" id="isbn-input" placeholder="9781633695689" maxlength="13" />
@@ -190,7 +194,10 @@
 
     <div class="panel-footer">
       <div class="book-count" id="book-count">— books</div>
-      <div class="reading-timer" id="timer">0000 H 00 MIN 00 SEC</div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="lock-btn" id="lock-btn" title="Owner access">⚿</button>
+        <div class="reading-timer" id="timer">0000 H 00 MIN 00 SEC</div>
+      </div>
     </div>
   </aside>
 
@@ -284,14 +291,11 @@ function renderShelf(){
     sh.innerHTML=`<span class="sec-num">${STATUS_NUMS[status]}</span><span class="sec-label">${STATUS_LABELS[status]}</span>`;
     wrap.appendChild(sh);
     const grid=document.createElement('div'); grid.className='book-grid';
-    const cA=document.createElement('div'); cA.className='col-a';
-    const cB=document.createElement('div'); cB.className='col-b';
-    group.forEach((book,i)=>{
-      const card=buildCard(book,gi);
-      (i%2===0?cA:cB).appendChild(card);
+    group.forEach((book)=>{
+      grid.appendChild(buildCard(book,gi));
       gi++;
     });
-    grid.appendChild(cA); grid.appendChild(cB); wrap.appendChild(grid);
+    wrap.appendChild(grid);
     secIdx++;
   });
   document.getElementById('book-count').textContent=`${books.length} book${books.length!==1?'s':''}`;
@@ -388,6 +392,35 @@ function showToast(msg){
   t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3000);
 }
+
+// Owner access gate
+const SHELF_PW = 'bibliotheca'; // change this to your own password
+const STORAGE_KEY = 'bibliotheca_unlocked';
+
+function applyLockState() {
+  const unlocked = localStorage.getItem(STORAGE_KEY) === '1';
+  document.getElementById('search-block').classList.toggle('visible', unlocked);
+  document.getElementById('lock-btn').title = unlocked ? 'Lock shelf' : 'Owner access';
+  document.getElementById('lock-btn').textContent = unlocked ? '⚿' : '⚿';
+}
+
+document.getElementById('lock-btn').addEventListener('click', () => {
+  const unlocked = localStorage.getItem(STORAGE_KEY) === '1';
+  if (unlocked) {
+    localStorage.removeItem(STORAGE_KEY);
+    applyLockState();
+  } else {
+    const pw = prompt('Password:');
+    if (pw === SHELF_PW) {
+      localStorage.setItem(STORAGE_KEY, '1');
+      applyLockState();
+    } else if (pw !== null) {
+      showToast('Incorrect password');
+    }
+  }
+});
+
+applyLockState();
 
 renderShelf();   // render seed immediately
 loadBooks();     // then replace with books.json if available
