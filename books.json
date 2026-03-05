@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-05T02:08:12.420Z",
+  "generated": "2026-03-05T02:38:39.124Z",
   "count": 15,
   "books": [
     {
@@ -45,18 +45,20 @@
       ]
     },
     {
-      "isbn": "9781094374901",
+      "isbn": "9781094374918",
       "status": "finished",
       "date_added": "2026-03-05",
       "date_finished": "2026-03-05",
       "rating": null,
       "note": null,
-      "title": "9781094374901",
-      "authors": [],
+      "title": "His Other Wife (A Stella Fall Psychological Suspense Thriller-Book One)",
+      "authors": [
+        "Ava Strong"
+      ],
       "publisher": "",
-      "year": null,
-      "pages": null,
-      "cover": null,
+      "year": 2021,
+      "pages": 198,
+      "cover": "https://books.google.com/books/content?id=qaOazgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       "description": "",
       "subjects": []
     },
