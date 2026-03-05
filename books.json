@@ -1,0 +1,70 @@
+{
+  "generated": "2026-03-05T00:55:33.051Z",
+  "count": 3,
+  "books": [
+    {
+      "isbn": "9781633695689",
+      "status": "reading",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Prediction Machines",
+      "authors": [
+        "Ajay Agrawal",
+        "Joshua Gans",
+        "Avi Goldfarb"
+      ],
+      "publisher": "Harvard Business Press",
+      "year": 2018,
+      "pages": 329,
+      "cover": "https://books.google.com/books/content?id=wJY4DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "\"What does AI mean for your business? Read this book to find out.\" -- Hal Varian, Chief Economist, Google Artificial intelligence does the seemingly impossible, magically bringing machines to life--driving cars, trading stocks, and teaching children. But facing the sea change that AI will bring can be paralyzing. How should companies set strategies, governments design policies, and people plan the…",
+      "subjects": [
+        "Computers"
+      ]
+    },
+    {
+      "isbn": "9780804136693",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Superforecasting",
+      "authors": [
+        "Philip Eyrikson Tetlock",
+        "Dan Gardner"
+      ],
+      "publisher": "Crown",
+      "year": 2015,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=ICgWrgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The Good Judgment Project involves tens of thousands of ordinary people--including a Brooklyn filmmaker, a retired pipe installer, and a former ballroom dancer--who set out to forecast global events. Some of the volunteers have turned out to be astonishingly good. They've beaten other benchmarks, competitors, and prediction markets. They've even beaten the collective judgment of intelligence analy…",
+      "subjects": [
+        "BUSINESS & ECONOMICS"
+      ]
+    },
+    {
+      "isbn": "9781633697638",
+      "status": "want",
+      "date_added": "2026-03-05",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Competing in the Age of AI",
+      "authors": [
+        "Marco Iansiti",
+        "Karim R. Lakhani"
+      ],
+      "publisher": "Harvard Business Press",
+      "year": 2020,
+      "pages": 180,
+      "cover": "https://books.google.com/books/content?id=VH-JDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "\"a provocative new book\" — The New York Times AI-centric organizations exhibit a new operating architecture, redefining how they create, capture, share, and deliver value. Now with a new preface that explores how the coronavirus crisis compelled organizations such as Massachusetts General Hospital, Verizon, and IKEA to transform themselves with remarkable speed, Marco Iansiti and Karim R. Lakhani …",
+      "subjects": [
+        "Business & Economics"
+      ]
+    }
+  ]
+}
