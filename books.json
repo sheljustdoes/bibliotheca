@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-05T10:14:56.467Z",
-  "count": 16,
+  "generated": "2026-03-06T20:11:42.069Z",
+  "count": 18,
   "books": [
     {
       "isbn": "9780316419598",
@@ -120,6 +120,47 @@
       "description": "\"Mickey7 is an Expendable: a disposable employee on a human expedition sent to colonize the ice world Niflheim. Whenever there's a mission that's too dangerous--even suicidal--the crew turns to Mickey. After one iteration dies, a new body is regenerated with most of his memories intact. On a routine scouting mission, Mickey7 goes missing and is presumed dead. By the time he returns to the colony b…",
       "subjects": [
         "Fiction"
+      ]
+    },
+    {
+      "isbn": "9781009258197",
+      "status": "want",
+      "date_added": "2026-03-06",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Artificial Intelligence",
+      "authors": [
+        "David L. Poole",
+        "Alan K. Mackworth"
+      ],
+      "publisher": "Cambridge University Press",
+      "year": 2023,
+      "pages": 897,
+      "cover": "https://books.google.com/books/content?id=ljHEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A comprehensive learning resource for undergraduate and graduate students, with new chapters on deep learning, causality, and social impact.",
+      "subjects": [
+        "Computers"
+      ]
+    },
+    {
+      "isbn": "9781633436343",
+      "status": "want",
+      "date_added": "2026-03-06",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "AI Agents in Action",
+      "authors": [
+        "Micheal Lanham"
+      ],
+      "publisher": "Simon and Schuster",
+      "year": 2025,
+      "pages": 342,
+      "cover": "https://books.google.com/books/content?id=_-1JEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "In AI Agents in Action, you'll learn how to build production-ready assistants, multi-agent systems, and behavioral agents. You'll master the essential parts of an agent, including retrieval-augmented knowledge and memory, while you create multi-agent applications that can use software tools, plan tasks autonomously, and learn from experience. As you explore the many interesting examples, you'll wo…",
+      "subjects": [
+        "Computers"
       ]
     },
     {
