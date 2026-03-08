@@ -34,7 +34,7 @@
       --col-left: 400px;
     }
 
-    html, body { height: 100%; background: var(--cream); color: var(--charcoal); font-family: 'DM Mono', monospace; overflow: hidden; }
+    html, body { height: 100%; background-color: var(--cream); background-image: linear-gradient(rgba(30,28,26,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(30,28,26,0.055) 1px, transparent 1px); background-size: 28px 28px; color: var(--charcoal); font-family: 'DM Mono', monospace; overflow: hidden; }
 
     /* Layout */
     .layout { display: grid; grid-template-columns: var(--col-left) 1fr; height: 100vh; }
@@ -45,7 +45,7 @@
     /* Brand header */
     .brand-header { display: flex; align-items: baseline; justify-content: space-between; padding: 28px 40px 24px; border-bottom: 2px solid var(--charcoal); flex-shrink: 0; }
     .wordmark { font-family: 'Outfit', sans-serif; font-size: 42px; font-weight: 600; letter-spacing: -2px; line-height: 1; color: var(--charcoal); }
-    .wordmark .period { color: var(--terracotta); }
+    .wordmark .period { color: var(--charcoal); }
     .brand-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--taupe); }
 
     /* Hero body */
@@ -76,7 +76,7 @@
     .search-block.visible { display: block; }
 
     /* Right panel */
-    .panel-right { overflow-y: auto; overflow-x: hidden; background: var(--parchment); scrollbar-width: none; }
+    .panel-right { overflow-y: auto; overflow-x: hidden; background-color: var(--parchment); background-image: linear-gradient(rgba(30,28,26,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(30,28,26,0.055) 1px, transparent 1px); background-size: 28px 28px; scrollbar-width: none; }
     .panel-right::-webkit-scrollbar { display: none; }
 
     .cascade-header { padding: 24px 36px 20px; border-bottom: 1px solid var(--rule-strong); display: flex; align-items: baseline; justify-content: space-between; }
