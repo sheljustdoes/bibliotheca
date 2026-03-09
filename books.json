@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-06T20:11:42.069Z",
-  "count": 18,
+  "generated": "2026-03-09T21:51:23.435Z",
+  "count": 19,
   "books": [
     {
       "isbn": "9780316419598",
@@ -118,6 +118,26 @@
       "pages": null,
       "cover": "https://books.google.com/books/content?id=um9pEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       "description": "\"Mickey7 is an Expendable: a disposable employee on a human expedition sent to colonize the ice world Niflheim. Whenever there's a mission that's too dangerous--even suicidal--the crew turns to Mickey. After one iteration dies, a new body is regenerated with most of his memories intact. On a routine scouting mission, Mickey7 goes missing and is presumed dead. By the time he returns to the colony b…",
+      "subjects": [
+        "Fiction"
+      ]
+    },
+    {
+      "isbn": "9780553293357",
+      "status": "want",
+      "date_added": "2026-03-09",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Foundation",
+      "authors": [
+        "Isaac Asimov"
+      ],
+      "publisher": "National Geographic Books",
+      "year": 1991,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=Gf6NEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The first novel in Isaac Asimov’s classic science-fiction masterpiece, the Foundation series THE EPIC SAGA THAT INSPIRED THE APPLE TV+ SERIES FOUNDATION • Nominated as one of America’s best-loved novels by PBS’s The Great American Read For twelve thousand years the Galactic Empire has ruled supreme. Now it is dying. But only Hari Seldon, creator of the revolutionary science of psychohistory, can s…",
       "subjects": [
         "Fiction"
       ]
