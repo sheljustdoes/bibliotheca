@@ -53,6 +53,7 @@
     .hero-display { font-family: 'Outfit', sans-serif; font-size: clamp(2.6rem, 3.8vw, 3.4rem); font-weight: 600; letter-spacing: -2.5px; line-height: 0.9; color: var(--charcoal); }
     .hero-display .gesture { color: var(--terracotta); font-style: italic; font-weight: 300; display: block; }
     .hero-serif { font-family: 'Lora', Georgia, serif; font-size: 14px; font-style: italic; line-height: 1.75; color: var(--taupe); max-width: 270px; }
+    .hero-note { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); max-width: 270px; line-height: 1.6; }
 
     /* Search */
     .field { margin-bottom: 17px; }
@@ -60,20 +61,11 @@
     .field input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--charcoal); padding: 5px 0 8px; font-family: 'Lora', Georgia, serif; font-size: 15px; font-style: italic; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
     .field input::placeholder { color: var(--taupe); }
     .field input:focus { border-color: var(--terracotta); }
-    .btn-add { display: inline-flex; align-items: center; gap: 8px; background: var(--charcoal); color: var(--cream); border: none; padding: 11px 22px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 2px; }
-    .btn-add:hover { background: var(--terracotta); }
-    .btn-add.loading { opacity: 0.5; pointer-events: none; }
 
     /* Footer */
     .panel-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; border-top: 1px solid var(--rule); flex-shrink: 0; }
     .book-count { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--taupe); }
     .reading-timer { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--taupe); }
-    .lock-btn { background: none; border: none; cursor: pointer; font-size: 11px; color: var(--taupe); opacity: 0.4; transition: opacity 0.2s; padding: 0; line-height: 1; }
-    .lock-btn:hover { opacity: 1; }
-
-    /* Search block hidden by default, shown when unlocked */
-    .search-block { padding: 24px 40px 24px; border-top: 1px solid var(--rule-strong); flex-shrink: 0; display: none; }
-    .search-block.visible { display: block; }
 
     /* Right panel */
     .panel-right { overflow-y: auto; overflow-x: hidden; background-color: var(--parchment); background-image: linear-gradient(rgba(30,28,26,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(30,28,26,0.055) 1px, transparent 1px); background-size: 28px 28px; scrollbar-width: none; }
@@ -178,26 +170,12 @@
         <span class="gesture">reading.</span>
       </div>
       <p class="hero-serif">No recommendations. No ratings war.<br>Just the books — and what they leave behind.</p>
-    </div>
-
-    <div class="search-block" id="search-block">
-      <div class="field">
-        <label>ISBN-13</label>
-        <input type="text" id="isbn-input" placeholder="9781633695689" maxlength="13" />
-      </div>
-      <div class="field">
-        <label>Status</label>
-        <input type="text" id="status-input" placeholder="reading · finished · want" />
-      </div>
-      <button class="btn-add" id="add-btn"><span>Add to Shelf →</span></button>
+      <p class="hero-note">This shelf is a public read-only snapshot. Book updates are synced from a private archive repository.</p>
     </div>
 
     <div class="panel-footer">
       <div class="book-count" id="book-count">— books</div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <button class="lock-btn" id="lock-btn" title="Owner access">⚿</button>
-        <div class="reading-timer" id="timer">0000 H 00 MIN 00 SEC</div>
-      </div>
+      <div class="reading-timer" id="timer">0000 H 00 MIN 00 SEC</div>
     </div>
   </aside>
 
@@ -356,71 +334,11 @@ document.getElementById('detail-close').addEventListener('click',closeDetail);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
 function closeDetail(){ document.getElementById('overlay').classList.remove('open'); }
 
-document.getElementById('add-btn').addEventListener('click',async()=>{
-  const isbn=document.getElementById('isbn-input').value.trim().replace(/[^0-9X]/gi,'');
-  const status=document.getElementById('status-input').value.trim().toLowerCase()||'reading';
-  if(isbn.length!==13&&isbn.length!==10){showToast('Enter a valid ISBN-13');return;}
-  if(books.find(b=>b.isbn===isbn)){showToast('Already on your shelf');return;}
-  const btn=document.getElementById('add-btn');
-  btn.classList.add('loading'); btn.querySelector('span').textContent='Fetching →';
-  try{
-    const res=await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
-    const data=await res.json();
-    if(!data.items?.length){showToast('Book not found — check the ISBN');return;}
-    const vol=data.items[0].volumeInfo;
-    const rawCover=vol.imageLinks?(vol.imageLinks.extraLarge||vol.imageLinks.large||vol.imageLinks.thumbnail):null;
-    const cover=rawCover?rawCover.replace('http://','https://'):null;
-    const vs=['reading','finished','want'].includes(status)?status:'reading';
-    books.unshift({isbn,status:vs,date_added:today(),date_finished:vs==='finished'?today():null,
-      rating:null,note:null,title:vol.title||'Unknown Title',authors:vol.authors||['Unknown Author'],
-      publisher:vol.publisher||'',year:vol.publishedDate?parseInt(vol.publishedDate):null,
-      pages:vol.pageCount||null,cover,
-      description:vol.description?vol.description.slice(0,320)+(vol.description.length>320?'…':''):'',
-      subjects:vol.categories?vol.categories.slice(0,3).map(c=>c.split('/').pop().trim()):[]});
-    renderShelf();
-    showToast(`Added · ${(vol.title||'').slice(0,36)}${(vol.title||'').length>36?'…':''}`);
-    document.getElementById('isbn-input').value='';
-    document.getElementById('status-input').value='';
-  }catch(err){showToast('Error fetching data');console.error(err);}
-  finally{btn.classList.remove('loading');btn.querySelector('span').textContent='Add to Shelf →';}
-});
-
-document.getElementById('isbn-input').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add-btn').click();});
-
 function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3000);
 }
-
-// Owner access gate
-const SHELF_PW = 'bibliotheca'; // change this to your own password
-const STORAGE_KEY = 'bibliotheca_unlocked';
-
-function applyLockState() {
-  const unlocked = localStorage.getItem(STORAGE_KEY) === '1';
-  document.getElementById('search-block').classList.toggle('visible', unlocked);
-  document.getElementById('lock-btn').title = unlocked ? 'Lock shelf' : 'Owner access';
-  document.getElementById('lock-btn').textContent = unlocked ? '⚿' : '⚿';
-}
-
-document.getElementById('lock-btn').addEventListener('click', () => {
-  const unlocked = localStorage.getItem(STORAGE_KEY) === '1';
-  if (unlocked) {
-    localStorage.removeItem(STORAGE_KEY);
-    applyLockState();
-  } else {
-    const pw = prompt('Password:');
-    if (pw === SHELF_PW) {
-      localStorage.setItem(STORAGE_KEY, '1');
-      applyLockState();
-    } else if (pw !== null) {
-      showToast('Incorrect password');
-    }
-  }
-});
-
-applyLockState();
 
 renderShelf();   // render seed immediately
 loadBooks();     // then replace with books.json if available
