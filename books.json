@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-09T21:51:23.435Z",
-  "count": 19,
+  "generated": "2026-08-27T17:01:32.518Z",
+  "count": 24,
   "books": [
     {
       "isbn": "9780316419598",
@@ -42,6 +42,67 @@
       "description": "\"What does AI mean for your business? Read this book to find out.\" -- Hal Varian, Chief Economist, Google Artificial intelligence does the seemingly impossible, magically bringing machines to life--driving cars, trading stocks, and teaching children. But facing the sea change that AI will bring can be paralyzing. How should companies set strategies, governments design policies, and people plan the…",
       "subjects": [
         "Computers"
+      ]
+    },
+    {
+      "isbn": "9780062407801",
+      "status": "finished",
+      "date_added": "2026-08-27",
+      "date_finished": "2026-08-27",
+      "rating": null,
+      "note": null,
+      "title": "Never Split the Difference",
+      "authors": [
+        "Chris Voss",
+        "Tahl Raz"
+      ],
+      "publisher": "HarperBusiness",
+      "year": 2016,
+      "pages": 288,
+      "cover": "https://books.google.com/books/content?id=BQwejgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A former international hostage negotiator for the FBI offers a new, field-tested approach to high-stakes negotiations—whether in the boardroom or at home. After a stint policing the rough streets of Kansas City, Missouri, Chris Voss joined the FBI, where his career as a hostage negotiator brought him face-to-face with a range of criminals, including bank robbers and terrorists. Reaching the pinnac…",
+      "subjects": [
+        "Business & Economics"
+      ]
+    },
+    {
+      "isbn": "9781538776391",
+      "status": "finished",
+      "date_added": "2026-08-27",
+      "date_finished": "2026-08-27",
+      "rating": null,
+      "note": null,
+      "title": "Nice Girls Don't Get the Corner Office",
+      "authors": [
+        "Lois P. Frankel"
+      ],
+      "publisher": "Balance",
+      "year": 2026,
+      "pages": null,
+      "cover": "https://books.google.com/books/content?id=CaF20QEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Since 2004, Dr. Lois P. Frankel's Nice Girls Don't Get the Corner Office has been an essential resource for women seeking advice and empowerment to stop sabotaging their careers and get ahead in the workplace. This completely updated and revised vital new 3rd edition is everything a modern working girl needs to get what she wants. We've leaned in, we've girl bossed, we've untamed, and it's still c…",
+      "subjects": [
+        "Business & Economics"
+      ]
+    },
+    {
+      "isbn": "9781541619630",
+      "status": "finished",
+      "date_added": "2026-08-27",
+      "date_finished": "2026-08-27",
+      "rating": null,
+      "note": null,
+      "title": "Right Within",
+      "authors": [
+        "Minda Harts"
+      ],
+      "publisher": "Seal Press",
+      "year": 2021,
+      "pages": 224,
+      "cover": "https://books.google.com/books/content?id=Zx8bEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "From the powerhouse author of The Memo, the essential self-help book for women of color to heal—and thrive—in the workplace In workplaces nationwide, women of color need frank talk and honest advice on how to deal with microaggressions, heal from racialized trauma, and find relief from invisible workplace burdens. Filled with Minda Harts’s signature wit and warmth, Right Within offers strategies f…",
+      "subjects": [
+        "Business & Economics"
       ]
     },
     {
@@ -120,6 +181,46 @@
       "description": "\"Mickey7 is an Expendable: a disposable employee on a human expedition sent to colonize the ice world Niflheim. Whenever there's a mission that's too dangerous--even suicidal--the crew turns to Mickey. After one iteration dies, a new body is regenerated with most of his memories intact. On a routine scouting mission, Mickey7 goes missing and is presumed dead. By the time he returns to the colony b…",
       "subjects": [
         "Fiction"
+      ]
+    },
+    {
+      "isbn": "9781250339997",
+      "status": "want",
+      "date_added": "2026-08-27",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "Talk to Me Nice",
+      "authors": [
+        "Minda Harts"
+      ],
+      "publisher": "Flatiron Books",
+      "year": 2025,
+      "pages": 140,
+      "cover": "https://books.google.com/books/content?id=WiQZEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "USA TODAY BESTSELLER • NATIONAL BESTSELLER • Longlisted for the Non-Obvious Book Awards 2025 “A game-changer for workplace dynamics” —Eve Rodsky, New York Times bestselling author of Fair Play The author of The Memo helps you discover what you need to navigate every workplace communication challenge with confidence. We are living in a world of broken trust, especially in the workplace. Employees h…",
+      "subjects": [
+        "Business & Economics"
+      ]
+    },
+    {
+      "isbn": "9781580059138",
+      "status": "want",
+      "date_added": "2026-08-27",
+      "date_finished": null,
+      "rating": null,
+      "note": null,
+      "title": "The Memo",
+      "authors": [
+        "Minda Harts"
+      ],
+      "publisher": "",
+      "year": 2019,
+      "pages": 221,
+      "cover": "https://books.google.com/books/content?id=bp0xyQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Lean In for women of color: A no-BS look at the odds stacked against women of color in professional settings, from the wage gap to biases and micro-aggressions, with actionable takeaways The Memo is the much-needed career advice guide for women of color specifically, finally ending the one-size-fits-all approach of business books that lump together women across races and overlook the unique barrie…",
+      "subjects": [
+        "SOCIAL SCIENCE"
       ]
     },
     {
