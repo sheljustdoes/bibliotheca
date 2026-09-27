@@ -1,5 +1,7 @@
 # bibliotheca
 
+**Status:** Shipped.
+
 A private library made public.
 
 ---
