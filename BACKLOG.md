@@ -3,7 +3,7 @@
 Standing queue of development work for this project, ordered by priority.
 Created 2026-09-22.
 
-**Status:** Shipped — public reading shelf, driven by the private [apotheca](https://github.com/sheljustdoes/apotheca) store
+**Status:** Shipped — public reading shelf, driven by a private store (apotheca) that holds the files
 
 ---
 
