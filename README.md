@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="bibliotheca." width="100%"></p>
+
 # bibliotheca
 
 **Status:** Shipped.
